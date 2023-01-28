@@ -16,6 +16,36 @@ header {
     margin-bottom: 15px;
 }
 
+table {
+    width: 100%;
+    padding: 10rem;
+}
+
+thead th {
+    background-color: #f8f9fa;
+    color: #495057;
+    font-weight: bold;
+    text-align: center;
+}
+
+tbody td {
+    padding: 0.75rem;
+    vertical-align: middle;
+}
+
+tbody tr:nth-child(odd) {
+    background-color: #f4f4f4;
+}
+
+/* custom styling to the second column specifically here */
+tbody td:nth-child(2) {
+    width: 20%;
+    text-align: right;
+}
+/* custom styling to the third column specifically here */
+tbody td:nth-child(3) {
+    width: 15%;
+}
 
 #graphView {
     position: absolute;
