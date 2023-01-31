@@ -81,6 +81,9 @@ function generateGraphView(vesselsData) {
           'text-valign':'bottom',
           'margin':'20px',
           'background-image': 'https://static.thenounproject.com/png/1495034-200.png',
+          'font-size':14,
+          'text-max-width':50,
+          'padding':'10px',
           content: 'data(name)',
         })
         .selector('edge')

@@ -4,8 +4,8 @@ const body = document.getElementsByTagName("body")[0];
 
 function buildTable(data) {
   const table = document.createElement("table");
-  table.setAttribute("id","table")
-  table.setAttribute("class", "table table-hover table-responsive-sm table-striped table-bordered")
+  table.setAttribute("id", "table");
+  table.setAttribute("class", "table table-hover table-responsive-sm table-striped table-bordered");
   table.innerHTML = `<thead><tr><th>Field</th><th>Value</th><th>Units</th></tr></thead>`;
 
   const tbody = document.createElement("tbody");
@@ -13,13 +13,12 @@ function buildTable(data) {
   function buildRow(data, parentKey = "") {
     for (const key in data) {
       if (
-          key !== "meta" &&
-          key !== "$source" &&
-          key !== "timestamp" &&
-          key !== "units" &&
-          key !== "description" &&
-          key !== "sentence" &&
-          key !== "notifications"
+        key !== "meta" &&
+        key !== "$source" &&
+        key !== "timestamp" &&
+        key !== "units" &&
+        key !== "sentence" &&
+        key !== "notifications"
       ) {
         if (typeof data[key] === "object") {
           buildRow(data[key], parentKey + key + " > ");
@@ -28,14 +27,20 @@ function buildTable(data) {
           field = field.replace("> value", "");
           let value = data[key];
           let units = "";
+          let description = "";
+
+          if (data.hasOwnProperty("meta") && data.meta.hasOwnProperty("description")) {
+            description = data.meta.description;
+            field = `<span class="CellWithComment">${field}<span class="CellComment">${description}</span></span>`;
+          }
 
           if (data.hasOwnProperty("meta") && data.meta.hasOwnProperty("units")) {
             units = data.meta.units;
           }
-          if(!isNaN(value)) {
+          if (!isNaN(value)) {
             value = parseFloat(value).toFixed(3);
           }
-          const row = `<tr><td>${field}</td><td>${value}</td><td>${units}</td></tr>`;
+          const row = `<tr><td class="CellWithComment">${field}</td><td>${value}</td><td>${units}</td></tr>`;
           tbody.innerHTML += row;
         }
       }
@@ -46,9 +51,7 @@ function buildTable(data) {
   return table;
 }
 
-
-
-// fetching the data from a signalk server
+// fetching the data from a signal-k server
 // TODO: change the host name for production
 fetch("http://localhost:3001/signalk/v1/api/vessels")
   .then((response) => response.json())
