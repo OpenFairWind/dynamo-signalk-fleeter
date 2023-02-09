@@ -68,7 +68,7 @@ tbody tr:nth-child(odd) {
     top:-30px;
     left:0px;
     border-color: black;
-    border-width: 1;
+    border-width: 1px;
 }
 .CellWithComment:hover span.CellComment {visibility: visible;opacity: 1;}
 

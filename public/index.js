@@ -1,5 +1,3 @@
-// Description: This file contains the code for the web page that displays the vessels and their data
-
 const body = document.getElementsByTagName("body")[0];
 
 function buildTable(data) {
@@ -52,11 +50,14 @@ function buildTable(data) {
 }
 
 // fetching the data from a signal-k server
-// TODO: change the host name for production
-fetch("http://localhost:3001/signalk/v1/api/vessels")
+var link = `http://${window.location.hostname}:${window.location.port}/signalk/v1/api/vessels`;
+fetch(link)
   .then((response) => response.json())
   .catch((error) => {
     console.log(error);
+    var errorMessage = document.createElement("errorMessage");
+    errorMessage.innerHTML = `<h4> Error connecting to the host </h4>`;
+    body.appendChild(errorMessage);
   })
   .then((vesselsData) => {
     generateGraphView(vesselsData);
