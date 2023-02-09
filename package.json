@@ -1,6 +1,6 @@
 {
   "name": "dynamo-signalk-fleeter",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "A Signal K nodejs server plugin that implements hierarchical parent/child relations between vessel",
   "main": "index.js",
   "scripts": {
