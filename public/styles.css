@@ -1,0 +1,89 @@
+#title {
+    font-weight: 700;
+    line-height: 1.2;
+    color: black;
+    margin-bottom: 1rem;
+    text-align: center;
+    font-family: Ayuthaya;
+}
+
+#subtitle {
+    text-align: center;
+}
+
+#buttonDiv {
+    display: flex;
+    justify-content: right;
+    margin: 1rem;
+}
+
+#button {
+    border-width: 1px;
+    border-color: black;
+    border-radius: 12px;
+}
+
+#button:hover {
+    border-width: 2px;
+}
+
+header {
+    margin-top: 2em;
+    margin-bottom: 15px;
+}
+
+table {
+    width: 100%;
+    padding: 10rem;
+}
+
+thead th {
+    background-color: #f8f9fa;
+    color: #495057;
+    font-weight: bold;
+    text-align: center;
+}
+
+tbody td {
+    padding: 0.75rem;
+    vertical-align: middle;
+}
+
+tbody tr:nth-child(odd) {
+    background-color: #f4f4f4;
+}
+
+.CellWithComment{position:relative;}
+.CellComment
+{
+    visibility: hidden;
+    width: auto;
+    position:absolute;
+    z-index:100;
+    text-align: Left;
+    opacity: 0.5;
+    transition: opacity 0.3s;
+    background-color: lightblue;
+    padding:5px;
+    top:-30px;
+    left:0px;
+    border-color: black;
+    border-width: 1px;
+}
+.CellWithComment:hover span.CellComment {visibility: visible;opacity: 1;}
+
+/* custom styling to the second column specifically here */
+tbody td:nth-child(2) {
+    width: 30%;
+    text-align: right;
+}
+/* custom styling to the third column specifically here */
+tbody td:nth-child(3) {
+    width: 10%;
+}
+
+#graphView {
+    position: absolute;
+    width: 100%;
+    height: 90%;
+}
