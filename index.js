@@ -1,47 +1,47 @@
 module.exports = function (app) {
-  const plugin = {}
+  const plugin = {};
 
-  plugin.id = 'vesselDependencies'
-  plugin.name = 'Vessel Dependencies'
+  plugin.id = "dynamo-signalk-fleeter";
+  plugin.name = "Fleeter";
   plugin.description =
-    'Plugin that create an hierarchy relationship between the vessel and other vessels'
+    "Plugin that create an hierarchy relationship between the vessel and other vessels";
 
   plugin.schema = {
-    type: 'object',
+    type: "object",
     properties: {
       parents: {
-        type: 'array',
-        title: 'parents vessels uuid',
+        type: "array",
+        title: "parents vessels UUID's",
         items: {
-          type: 'string'
+          type: "string",
         },
         uniqueItems: true,
-        default: []
+        default: [],
       },
       children: {
-        type: 'array',
-        title: 'children vessels uuid',
+        type: "array",
+        title: "children vessels UUID's",
         items: {
-          type: 'string'
+          type: "string",
         },
         uniqueItems: true,
-        default: []
-      }
-    }
-  }
+        default: [],
+      },
+    },
+  };
 
   plugin.start = function (options) {
-    app.debug('Plugin started')
+    app.debug("Plugin started");
 
     // Binding the arrays
     if (options) {
-      plugin.parents = options.parents
-      plugin.children = options.children
-      app.debug('Parents and children associated!')
+      plugin.parents = options.parents;
+      plugin.children = options.children;
+      app.debug("Parents and children associated!");
     } else {
-      plugin.parents = []
-      plugin.children = []
-      app.debug('Neither parents or children associated!')
+      plugin.parents = [];
+      plugin.children = [];
+      app.debug("Neither parents or children associated!");
     }
 
     // Sending the relationships to the server
@@ -50,27 +50,22 @@ module.exports = function (app) {
         {
           values: [
             {
-              path: 'parents',
-              value: plugin.parents
+              path: "parents",
+              value: plugin.parents,
             },
             {
-              path: 'children',
-              value: plugin.children
-            }
-          ]
-        }
-      ]
-    })
-    app.debug('parents and children bound')
-  }
+              path: "children",
+              value: plugin.children,
+            },
+          ],
+        },
+      ],
+    });
+    app.debug("parents and children bound");
+  };
 
   plugin.stop = function () {
-    // here I will put the logic for the plugin stop
-    app.debug('Plugin stopped')
-
-    //unsubscribing from updates
-    plugin.stop = function () {
-    }
-  }
-  return plugin
-}
+    app.debug("Plugin stopped");
+  };
+  return plugin;
+};

@@ -15,7 +15,9 @@ function vesselToGraph(vesselsData) {
     const vesselParents = vessel[1].hasOwnProperty("parents") ? vessel[1].parents["value"] : [];
 
     if (vesselChildren !== []) {
-      console.log("vessel has no children: " + vesselID);
+      console.log(
+        "vessel has no children: " + vesselID + " but has parents: " + vesselParents.toString()
+      );
       vesselParents.forEach((parent) => {
         console.log("creating edge from: " + parent + " to: " + vesselID);
         elements.edges.push({
